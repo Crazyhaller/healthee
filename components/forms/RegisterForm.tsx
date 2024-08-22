@@ -336,7 +336,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           label="I consent to the privacy policy"
         />
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Schedule Appointment</SubmitButton>
       </form>
     </Form>
   )
