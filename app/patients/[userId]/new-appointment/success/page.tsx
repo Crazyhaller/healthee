@@ -6,7 +6,7 @@ import { formatDateTime } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import * as Sentry from '@sentry/nextjs'
+// import * as Sentry from '@sentry/nextjs'
 
 const Success = async ({
   params: { userId },
@@ -19,7 +19,7 @@ const Success = async ({
   )
   const user = await getUser(userId)
 
-  Sentry.metrics.set('user_view_appointment-success', user.name)
+  // Sentry.metrics.set('user_view_appointment-success', user.name)
 
   return (
     <div className="flex h-screen max-h-screen px-[5%]">

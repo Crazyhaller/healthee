@@ -1,7 +1,7 @@
 import AppointmentForm from '@/components/forms/AppointmentForm'
 import { getPatient } from '@/lib/actions/patient.actions'
 import Image from 'next/image'
-import * as Sentry from '@sentry/nextjs'
+// import * as Sentry from '@sentry/nextjs'
 import Link from 'next/link'
 
 export default async function NewAppointment({
@@ -9,7 +9,7 @@ export default async function NewAppointment({
 }: SearchParamProps) {
   const patient = await getPatient(userId)
 
-  Sentry.metrics.set('user_view_new-appointment', patient.name)
+  // Sentry.metrics.set('user_view_new-appointment', patient.name)
 
   return (
     <div className="flex h-screen max-h-screen">
