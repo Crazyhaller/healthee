@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Healthee
 
-## Getting Started
+Healthee is a Next.js + Appwrite starter for a medical appointment and patient management frontend. It's a modern TypeScript project with Tailwind CSS and Appwrite integration for auth, storage and database operations.
 
-First, run the development server:
+**Tech stack:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework:** `Next.js (App Router)`
+- **Language:** `TypeScript`
+- **Styling:** `Tailwind CSS`
+- **Backend-as-a-Service:** `Appwrite` (used for database, storage, auth)
+
+## Features
+
+- Patient registration and appointment creation UI
+- File upload support for patient documents
+- Admin and patient routes
+- Modular UI components (forms, tables, dialogs)
+
+## Quick Start
+
+Prerequisites: Node.js v18+ and a package manager (`npm`, `pnpm`, or `yarn`).
+
+1. Install dependencies
+
+```powershell
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create an environment file
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` in the project root and add the required environment variables (example below). Never commit secrets to git.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Run the development server
 
-## Learn More
+```powershell
+npm run dev
+# Open http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Build for production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```powershell
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Environment Variables
 
-## Deploy on Vercel
+Below are the environment variable names expected by this project. Provide values locally through `.env.local` or your deployment provider's secrets manager. Do not paste secrets into public repos.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+PROJECT_ID=
+API_KEY=
+DATABASE_ID=
+PATIENT_COLLECTION_ID=
+DOCTOR_COLLECTION_ID=
+APPOINTMENT_COLLECTION_ID=
+NEXT_PUBLIC_BUCKET_ID=
+NEXT_PUBLIC_ENDPOINT=
+NEXT_PUBLIC_ADMIN_PASSKEY=
+SENTRY_AUTH_TOKEN=
+TWILIO_RECOVERY_CODE=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Notes:
+
+- `NEXT_PUBLIC_ENDPOINT` should point to your Appwrite endpoint (e.g. `https://cloud.appwrite.io/v1`).
+- `API_KEY` and other IDs are sensitive. Use your hosting provider's secret storage for production.
+
+## App structure
+
+Top-level overview of important folders and files:
+
+- `app/` - Next.js App Router pages and routes
+- `components/` - Reusable UI components and forms
+- `components/forms/` - Form components (Appointment, Patient, Register)
+- `components/table/` - Data table and column definitions
+- `lib/` - Appwrite config, utilities, and action helpers
+- `constants/` - Application constants
+- `public/` - Static assets
+- `types/` - TypeScript types
+
+Key files:
+
+- `app/page.tsx` - Public landing page
+- `app/admin/page.tsx` - Admin UI
+- `components/theme-provider.tsx` - Theme + provider setup
+- `lib/appwrite.config.ts` - Appwrite client configuration
+
+## Appwrite notes
+
+- This frontend expects an Appwrite project and collections configured for patients, doctors and appointments.
+- Configure the corresponding collection IDs and project/endpoint values in `.env.local`.
+
+## Deployment
+
+- Vercel works well with Next.js App Router. Add the environment variables in the Vercel dashboard.
+- Ensure `NEXT_PUBLIC_ENDPOINT` and other Appwrite IDs are set as environment variables in production.
+
+## Contributing
+
+- Fork the repo, create a feature branch, and open a pull request.
+- Keep secrets out of PRs and use mock/test accounts for demos.
